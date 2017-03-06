@@ -4,7 +4,4 @@
 
 
 def hello(name=''):
-    if name:
-        return 'Hello, ' + name + '!'
-    else:
-        return 'Hello, World!'
+    return 'Hello, {}!'.format(name or 'World')
