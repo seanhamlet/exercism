@@ -7,9 +7,9 @@ var Year = function(year) {
 };
 
 Year.prototype.isLeap = function() {
-  divisibleBy4   = this.year % 4 === 0;
-  divisibleBy100 = this.year % 100 === 0;
-  divisibleBy400 = this.year % 400 === 0;
+  var divisibleBy4   = this.year % 4 === 0;
+  var divisibleBy100 = this.year % 100 === 0;
+  var divisibleBy400 = this.year % 400 === 0;
 
   return (divisibleBy4 && !divisibleBy100) || divisibleBy400;
 };
