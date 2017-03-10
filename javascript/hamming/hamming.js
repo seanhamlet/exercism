@@ -13,7 +13,7 @@ Hamming.prototype.compute = function(dna1, dna2) {
 
   // treat string as array and loop through comparing each value
   for (var i = 0; i < dna1.length; i++) {
-      if (dna1[i] !== dna2[i]) {
+      if (dna1.charAt(i) !== dna2.charAt(i)) {
         distance++;
       }
   }
