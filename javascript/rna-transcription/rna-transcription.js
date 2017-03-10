@@ -9,7 +9,8 @@ var DnaTranscriber = function() {}
 
 DnaTranscriber.prototype.toRna = function(dna) {
   // validate input, make sure it only matches GCTA characters
-  if (!dna.match(/^[GCTA]+$/)) {
+  var validDna = dna.match(/^[GCTA]+$/);
+  if (!validDna) {
     throw new Error("Invalid input");
   }
 
