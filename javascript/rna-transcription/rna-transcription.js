@@ -24,8 +24,8 @@ DnaTranscriber.prototype.toRna = function(dna) {
   var rna = '';
 
   // loop over dna nucleotides and transcribe into rna
-  for (var i = 0; i < dna.length; i++) {
-    rna += transcription[dna.charAt(i)];
+  for (var nuc of dna) {
+    rna += transcription[nuc];
   }
 
   return rna;
