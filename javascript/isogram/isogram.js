@@ -12,18 +12,16 @@ Isogram.prototype.isIsogram = function() {
   this.word = this.word.toLowerCase().replace(/[-\s]+/g, '');
 
   // determine if letter is repeated
+  var seenLetters = [];
   for (var letter of this.word) {
-    if (count(this.word, letter) > 1) {
+    if (seenLetters.includes(letter)){
       return false;
+    } else {
+      seenLetters.push(letter);
     }
   }
 
   return true;
-
-  // count number of times 'letter' occurs in 'str'
-  function count(str, letter) {
-    return str.split(letter).length - 1;
-  }
 }
 
 module.exports = Isogram;
