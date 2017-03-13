@@ -5,52 +5,33 @@ select the correct sublist
 
 var Anagram = function(word) {
   this.word = word;
+  this.normalize = function(word) {
+    return word.toLowerCase().split('').sort().join('');
+  };
 };
 
-Anagram.prototype.matches = function() {
-  var wordList = [];
+Anagram.prototype.matches = function(words) {
   var matchList = [];
-  // sort original word
-  var thisWordSorted = this.word.toLowerCase().split('').sort().join('');
+  var original = this.word;
 
   // check argument type for string arguments or list of strings
-  if (typeof arguments[0] === 'string') {
-    for (word of arguments) {
-      wordList.push(word)
-    }
-  } else {
-    wordList = arguments[0];
+  if (!Array.isArray(arguments[0])) {
+    words = Array.from(arguments);
   }
 
-  for (word of wordList) {
-    // if word length is not same as this.word length, skip
-    if (word.length !== this.word.length)
+  for (word of words) {
+    // make sure they aren't exact same word
+    if(word.toLowerCase() === original.toLowerCase()) {
       continue;
-
-    // if word is exact same, skip
-    if (wordMatch(word.toLowerCase(),this.word.toLowerCase()))
-      continue;
-
-    // sort word
-    var sortedWord = word.toLowerCase().split('').sort().join('');
+    }
 
     // determine if sorted words match
-    var doesMatch = wordMatch(sortedWord, thisWordSorted);
-
-    if (doesMatch)
+    if (this.normalize(word) === this.normalize(this.word)) {
       matchList.push(word);
+    }
   }
 
   return matchList;
-
-  function wordMatch(word1, word2) {
-    // see if words match
-    for (var i = 0; i < word1.length; i++) {
-      if (word1.charAt(i) !== word2.charAt(i))
-        return false;
-    }
-    return true;
-  }
 }
 
 
