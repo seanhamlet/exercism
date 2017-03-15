@@ -20,6 +20,7 @@ Binary.prototype.toDecimal = function() {
   // reverse binary number digits for easier computation
   var digitsReverse = this.binaryNum.split('').reverse();
 
+  // convert binary digits to decimal
   for (var i = 0; i < digitsReverse.length; i++) {
     decimal += parseInt(digitsReverse[i]) * Math.pow(2, i);
   }
