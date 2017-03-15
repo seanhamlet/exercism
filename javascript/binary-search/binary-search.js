@@ -15,24 +15,23 @@ var BinarySearch = function(arr) {
 };
 
 BinarySearch.prototype.indexOf = function(key) {
-  var left = 0;
-  var right = this.array.length - 1;
+  var low = 0;
+  var high = this.array.length - 1;
 
   var mid;
 
-  while (left <= right) {
-    mid = Math.floor((left + right) / 2);
+  while (low <= high) {
+    mid = Math.floor((low + high) / 2);
     if (this.array[mid] === key) {
       return mid;
     } else if (this.array[mid] < key) {
-      left = mid + 1;
+      low = mid + 1;
     } else if (this.array[mid] > key) {
-      right = mid - 1;
+      high = mid - 1;
     }
   }
 
   return -1;
-
 };
 
 
