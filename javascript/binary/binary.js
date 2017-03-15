@@ -17,11 +17,11 @@ Binary.prototype.toDecimal = function() {
   }
 
   var decimal = 0;
-  // reverse binary number for easier computation
-  var binaryReverse = this.binaryNum.split('').reverse().join('');
+  // reverse binary number digits for easier computation
+  var digitsReverse = this.binaryNum.split('').reverse();
 
-  for (var i = 0; i < binaryReverse.length; i++) {
-    decimal += parseInt(binaryReverse.charAt(i)) * 2 ** i;
+  for (var i = 0; i < digitsReverse.length; i++) {
+    decimal += parseInt(digitsReverse[i]) * Math.pow(2, i);
   }
 
   return decimal;
