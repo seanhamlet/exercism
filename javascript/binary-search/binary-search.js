@@ -20,18 +20,21 @@ BinarySearch.prototype.indexOf = function(key) {
 
   var mid;
 
-  while (low <= high) {
+  return binarySearch(key, this.array, low, high);
+
+  function binarySearch(key, array, low, high) {
     mid = Math.floor((low + high) / 2);
-    if (this.array[mid] === key) {
-      return mid;
-    } else if (this.array[mid] < key) {
-      low = mid + 1;
-    } else if (this.array[mid] > key) {
-      high = mid - 1;
+    if (low > high) {
+      return -1; // key not found
+    } else if (key === array[mid]) {
+      return mid; // key found
+    } else if (key < array[mid]) {
+      return binarySearch(key, array, low, mid - 1); // search left sublist
+    } else if (key > array[mid]) {
+      return binarySearch(key, array, mid + 1, high); // search right sublist
     }
   }
 
-  return -1;
 };
 
 
